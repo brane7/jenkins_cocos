@@ -33,7 +33,7 @@ pipeline {
                     // Docker 컨테이너에서 빌드 실행
                     // cocos-builder의 SHELL이 PowerShell이므로 cmd.exe를 명시적으로 경로 지정
                     bat """
-                        docker run --rm -v "${WORKSPACE}:C:/app" -w C:/app company/cocos-builder:3_8_7 C:\\Windows\\System32\\cmd.exe /c "CMD_Build\\cmd_build.bat ${params.TEMPLATE_KEY} ${params.COCOS_VERSION}"
+                        docker run --rm -v "${WORKSPACE}:C:/app" -w C:/app company/cocos-builder:3_8_7 C://Windows//System32//cmd.exe /c "CMD_Build//cmd_build.bat ${params.TEMPLATE_KEY} ${params.COCOS_VERSION}"
                     """
                 }
             }
