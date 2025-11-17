@@ -35,7 +35,7 @@ pipeline {
                 script {
                     echo "템플릿: ${params.TEMPLATE_KEY}, Cocos 버전: ${params.COCOS_VERSION}"
                 }
-                bat "CMD_Build\cmd_build.bat ${params.TEMPLATE_KEY} ${params.COCOS_VERSION}"
+                bat "CMD_Build\\cmd_build.bat ${params.TEMPLATE_KEY} ${params.COCOS_VERSION}"
             }
         }
         
