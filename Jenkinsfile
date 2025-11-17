@@ -31,10 +31,14 @@ pipeline {
                     echo "Docker 컨테이너에서 빌드 실행 중..."
                     
                     // Docker 컨테이너에서 빌드 실행
-                    // 따옴표를 이스케이프하여 처리
-                    def workspaceVol = WORKSPACE.replace('\\', '/')
+                    // 전체 경로를 명시하고 따옴표 처리를 단순화
+                    def workspaceVol = "${WORKSPACE}:C:/app"
+                    def batchFile = "CMD_Build\\\\cmd_build.bat"
+                    def cmdExe = "C:\\\\Windows\\\\System32\\\\cmd.exe"
+                    
+                    // Docker 명령을 직접 실행 (따옴표 이스케이프 처리)
                     bat """
-                        docker run --rm -v "${WORKSPACE}:C:/app" -w C:/app company/cocos-builder:3_8_7 cmd.exe /c "CMD_Build\\cmd_build.bat ${params.TEMPLATE_KEY} ${params.COCOS_VERSION}"
+                        docker run --rm -v "${workspaceVol}" -w C:/app company/cocos-builder:3_8_7 ${cmdExe} /c "${batchFile} ${params.TEMPLATE_KEY} ${params.COCOS_VERSION}"
                     """
                 }
             }
