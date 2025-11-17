@@ -24,18 +24,17 @@ pipeline {
         }
         
         stage('Build with Cocos') {
-            agent {
-                docker {
-                    image 'company/cocos-builder:3_8_7'
-                    label 'windows'
-                    args '-v "${WORKSPACE}":C:\\app -w C:\\app'
-                }
-            }
+            agent any
             steps {
                 script {
                     echo "템플릿: ${params.TEMPLATE_KEY}, Cocos 버전: ${params.COCOS_VERSION}"
+                    echo "Docker 컨테이너에서 빌드 실행 중..."
+                    
+                    // Docker 컨테이너에서 빌드 실행
+                    def dockerCmd = "docker run --rm -v \"${WORKSPACE}:C:\\app\" -w C:\\app company/cocos-builder:3_8_7 cmd /c \"CMD_Build\\cmd_build.bat ${params.TEMPLATE_KEY} ${params.COCOS_VERSION}\""
+                    
+                    bat dockerCmd
                 }
-                bat "CMD_Build\\cmd_build.bat ${params.TEMPLATE_KEY} ${params.COCOS_VERSION}"
             }
         }
         
