@@ -32,20 +32,33 @@ pipeline {
                     
                     // Docker 컨테이너에서 빌드 실행
                     // 명령어를 배열로 분리하여 가독성과 유지보수성 향상
+                    def workspaceMount = "${WORKSPACE}:C:/app"
+                    def batchFile = "CMD_Build\\cmd_build.bat"
+                    def templateKey = params.TEMPLATE_KEY
+                    def cocosVersion = params.COCOS_VERSION
+                    
+                    // 배열로 명령어 구성
+                    // cocos-builder의 SHELL이 PowerShell이므로 cmd.exe를 명시적으로 지정
                     def dockerArgs = [
                         'docker',
                         'run',
                         '--rm',
-                        '-v', "${WORKSPACE}:C:/app",
+                        '-v', workspaceMount,
                         '-w', 'C:/app',
                         'company/cocos-builder:3_8_7',
                         'C:\\Windows\\System32\\cmd.exe',
                         '/c',
-                        "CMD_Build\\cmd_build.bat ${params.TEMPLATE_KEY} ${params.COCOS_VERSION}"
+                        "${batchFile} ${templateKey} ${cocosVersion}"
                     ]
                     
-                    // 배열을 공백으로 결합하여 실행
-                    bat dockerArgs.join(' ')
+                    // 배열을 문자열로 결합 (공백으로 구분)
+                    def dockerCommand = dockerArgs.join(' ')
+                    
+                    echo "실행 명령: ${dockerCommand}"
+                    // bat 블록에서 실행
+                    bat """
+                        ${dockerCommand}
+                    """
                 }
             }
         }
