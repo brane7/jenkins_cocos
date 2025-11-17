@@ -31,7 +31,9 @@ pipeline {
                     echo "Docker 컨테이너에서 빌드 실행 중..."
                     
                     // Docker 컨테이너에서 빌드 실행
-                    def dockerCmd = "docker run --rm -v \"${WORKSPACE}:C:\\app\" -w C:\\app company/cocos-builder:3_8_7 cmd /c \"CMD_Build\\cmd_build.bat ${params.TEMPLATE_KEY} ${params.COCOS_VERSION}\""
+                    // Windows 경로를 정확히 처리
+                    def workspaceEscaped = WORKSPACE.replace('\\', '/')
+                    def dockerCmd = "docker run --rm -v \"${WORKSPACE}:C:/app\" -w C:/app company/cocos-builder:3_8_7 cmd.exe /c \"CMD_Build\\cmd_build.bat ${params.TEMPLATE_KEY} ${params.COCOS_VERSION}\""
                     
                     bat dockerCmd
                 }
