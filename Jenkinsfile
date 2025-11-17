@@ -38,27 +38,33 @@ pipeline {
                     def cocosVersion = params.COCOS_VERSION
                     
                     // 배열로 명령어 구성
-                    // cocos-builder의 SHELL이 PowerShell이므로 cmd.exe를 명시적으로 지정
+                    // cocos-builder의 SHELL이 PowerShell이므로 --entrypoint로 cmd.exe를 직접 지정
                     def dockerArgs = [
                         'docker',
                         'run',
                         '--rm',
+                        '--entrypoint', 'C:\\Windows\\System32\\cmd.exe',
                         '-v', workspaceMount,
                         '-w', 'C:/app',
                         'company/cocos-builder:3_8_7',
-                        'C:\\Windows\\System32\\cmd.exe',
                         '/c',
                         "${batchFile} ${templateKey} ${cocosVersion}"
                     ]
                     
                     // 배열을 문자열로 결합 (공백으로 구분)
-                    def dockerCommand = dockerArgs.join(' ')
+                    // Docker 명령 내부의 인자들은 따옴표로 감싸기
+                    def dockerCommand = dockerArgs.collect { arg ->
+                        // 공백이나 특수문자가 있는 인자는 따옴표로 감싸기
+                        if (arg.contains(' ') || arg.contains(':')) {
+                            "\"${arg}\""
+                        } else {
+                            arg
+                        }
+                    }.join(' ')
                     
                     echo "실행 명령: ${dockerCommand}"
                     // bat 블록에서 실행
-                    bat """
-                        ${dockerCommand}
-                    """
+                    bat dockerCommand
                 }
             }
         }
