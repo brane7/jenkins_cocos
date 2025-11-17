@@ -31,10 +31,11 @@ pipeline {
                     echo "Docker 컨테이너에서 빌드 실행 중..."
                     
                     // Docker 컨테이너에서 빌드 실행
-                    // Windows 경로를 정확히 처리하고 cmd.exe 경로를 명시적으로 지정
-                    def dockerCmd = "docker run --rm -v \"${WORKSPACE}:C:/app\" -w C:/app company/cocos-builder:3_8_7 C:\\Windows\\System32\\cmd.exe /c \"CMD_Build\\cmd_build.bat ${params.TEMPLATE_KEY} ${params.COCOS_VERSION}\""
-                    
-                    bat dockerCmd
+                    // 따옴표를 이스케이프하여 처리
+                    def workspaceVol = WORKSPACE.replace('\\', '/')
+                    bat """
+                        docker run --rm -v "${WORKSPACE}:C:/app" -w C:/app company/cocos-builder:3_8_7 cmd.exe /c "CMD_Build\\cmd_build.bat ${params.TEMPLATE_KEY} ${params.COCOS_VERSION}"
+                    """
                 }
             }
         }
