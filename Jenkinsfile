@@ -47,7 +47,6 @@ pipeline {
                         '-w', 'C:/app',
                         'company/cocos-builder:3_8_7',
                         'C:\\Windows\\System32\\cmd.exe',
-                        '/c',
                         "${batchFile} ${templateKey} ${cocosVersion}"
                     ]
                     
