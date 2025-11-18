@@ -28,44 +28,10 @@ pipeline {
             steps {
                 script {
                     echo "템플릿: ${params.TEMPLATE_KEY}, Cocos 버전: ${params.COCOS_VERSION}"
-                    echo "Docker 컨테이너에서 빌드 실행 중..."
-                    
-                    // Docker 컨테이너에서 빌드 실행
-                    // 명령어를 배열로 분리하여 가독성과 유지보수성 향상
-                    def workspaceMount = "${WORKSPACE}:C:/app"
-                    def batchFile = "CMD_Build\\cmd_build.bat"
-                    def templateKey = params.TEMPLATE_KEY
-                    def cocosVersion = params.COCOS_VERSION
-                    
-                    // 배열로 명령어 구성
-                    // cocos-builder의 SHELL이 PowerShell이므로 --entrypoint로 cmd.exe를 직접 지정
-                    def dockerArgs = [
-                        'docker',
-                        'run',
-                        '--rm',
-                        '--entrypoint', 'C:\\Windows\\System32\\cmd.exe',
-                        '-v', workspaceMount,
-                        '-w', 'C:/app',
-                        'company/cocos-builder:3_8_7',
-                        '/c',
-                        "${batchFile} ${templateKey} ${cocosVersion}"
-                    ]
-                    
-                    // 배열을 문자열로 결합 (공백으로 구분)
-                    // Docker 명령 내부의 인자들은 따옴표로 감싸기
-                    def dockerCommand = dockerArgs.collect { arg ->
-                        // 공백이나 특수문자가 있는 인자는 따옴표로 감싸기
-                        if (arg.contains(' ') || arg.contains(':')) {
-                            "\"${arg}\""
-                        } else {
-                            arg
-                        }
-                    }.join(' ')
-                    
-                    echo "실행 명령: ${dockerCommand}"
-                    // bat 블록에서 실행
-                    bat dockerCommand
+                    echo "Cocos Creator로 빌드 실행 중..."
                 }
+                // Cocos Creator가 Jenkins 이미지에 통합되어 있으므로 직접 실행
+                bat "CMD_Build\\cmd_build.bat ${params.TEMPLATE_KEY} ${params.COCOS_VERSION}"
             }
         }
         
