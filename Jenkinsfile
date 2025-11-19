@@ -31,10 +31,8 @@ pipeline {
                     echo "Cocos Creator로 빌드 실행 중..."
                 }
                 // Cocos Creator가 Jenkins 이미지에 통합되어 있으므로 직접 실행
-                // Windows 컨테이너에서 cmd.exe 전체 경로 사용
-                powershell """
-                    & C:\\Windows\\System32\\cmd.exe /c 'CMD_Build\\cmd_build.bat' '${params.TEMPLATE_KEY}' '${params.COCOS_VERSION}'
-                """
+                // Wrapper 스크립트 사용 (cmd.exe 경로 명시)
+                bat "CMD_Build\\cmd_build_wrapper.bat ${params.TEMPLATE_KEY} ${params.COCOS_VERSION}"
             }
         }
         
