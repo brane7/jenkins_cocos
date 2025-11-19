@@ -31,9 +31,11 @@ pipeline {
                     echo "Cocos Creator로 빌드 실행 중..."
                 }
                 // Cocos Creator가 Jenkins 이미지에 통합되어 있으므로 직접 실행
-                // cmd.exe 절대 경로 사용
+                // PATH 환경 변수에 System32 추가 후 실행
                 bat """
-                    C:\\Windows\\System32\\cmd.exe /c CMD_Build\\cmd_build.bat ${params.TEMPLATE_KEY} ${params.COCOS_VERSION}
+                    @echo off
+                    set PATH=%PATH%;C:\\Windows\\System32
+                    CMD_Build\\cmd_build.bat ${params.TEMPLATE_KEY} ${params.COCOS_VERSION}
                 """
             }
         }
