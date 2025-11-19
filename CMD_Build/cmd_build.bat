@@ -1,5 +1,12 @@
 @echo off
 setlocal ENABLEDELAYEDEXPANSION
+
+REM PATH에 System32 추가 (cmd.exe를 찾을 수 있도록)
+set "PATH=%PATH%;C:\Windows\System32"
+
+REM cmd.exe 절대 경로 설정 (필요시 사용)
+set "CMD_EXE=C:\Windows\System32\cmd.exe"
+
 chcp 65001 >nul
 set "SCRIPT_DIR=%~dp0"
 pushd "%SCRIPT_DIR%" >nul
