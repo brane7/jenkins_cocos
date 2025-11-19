@@ -29,14 +29,15 @@ pipeline {
                 script {
                     echo "템플릿: ${params.TEMPLATE_KEY}, Cocos 버전: ${params.COCOS_VERSION}"
                     echo "Cocos Creator로 빌드 실행 중..."
+                    
+                    // PATH 환경 변수에 System32 추가
+                    def currentPath = env.PATH ?: ""
+                    env.PATH = "C:\\Windows\\System32;${currentPath}"
+                    
+                    echo "Updated PATH: ${env.PATH}"
                 }
                 // Cocos Creator가 Jenkins 이미지에 통합되어 있으므로 직접 실행
-                // PATH 환경 변수에 System32 추가 후 실행
-                bat """
-                    @echo off
-                    set PATH=%PATH%;C:\\Windows\\System32
-                    CMD_Build\\cmd_build.bat ${params.TEMPLATE_KEY} ${params.COCOS_VERSION}
-                """
+                bat "CMD_Build\\cmd_build.bat ${params.TEMPLATE_KEY} ${params.COCOS_VERSION}"
             }
         }
         
