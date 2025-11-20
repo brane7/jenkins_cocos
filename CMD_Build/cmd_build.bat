@@ -1,32 +1,31 @@
 @echo off
+chcp 65001 >nul 2>&1
 setlocal ENABLEDELAYEDEXPANSION
 
-REM PATH에 System32 추가 (cmd.exe를 찾을 수 있도록)
+REM Add System32 to PATH (to find cmd.exe)
 set PATH=%PATH%;C:\Windows\System32
 
-REM cmd.exe 절대 경로 설정 (필요시 사용)
+REM Set absolute path for cmd.exe (if needed)
 set CMD_EXE=C:\Windows\System32\cmd.exe
-
-chcp 65001 >nul 2>&1
 set SCRIPT_DIR=%~dp0
 pushd %SCRIPT_DIR% >nul
 set PROJECT_DIR=%CD%
 set CONFIG_PATH=%PROJECT_DIR%\buildConfig_cocos_cmd.json
 
-REM CocosCreator.exe 경로 확인 및 설정
+REM Check and set CocosCreator.exe path
 if defined COCOS_ROOT (
     set COCOS_EXE=%COCOS_ROOT%\CocosCreator.exe
 ) else (
     set COCOS_EXE=C:\CocosCreator\CocosCreator.exe
 )
 
-REM CocosCreator.exe 존재 여부 확인
+REM Check if CocosCreator.exe exists
 if not exist %COCOS_EXE% (
     echo ERROR: CocosCreator.exe not found at %COCOS_EXE%
     exit /b 1
 )
 
-REM 설정 파일 존재 여부 확인
+REM Check if config file exists
 if not exist %CONFIG_PATH% (
     echo ERROR: Config file not found at %CONFIG_PATH%
     exit /b 1
