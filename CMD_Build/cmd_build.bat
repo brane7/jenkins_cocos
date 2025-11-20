@@ -26,8 +26,24 @@ if not exist %COCOS_EXE% (
     exit /b 1
 )
 
+REM 설정 파일 존재 여부 확인
+if not exist %CONFIG_PATH% (
+    echo ERROR: Config file not found at %CONFIG_PATH%
+    exit /b 1
+)
+
+echo Running CocosCreator...
+echo Project Dir: %PROJECT_DIR%
+echo Config Path: %CONFIG_PATH%
+echo CocosCreator: %COCOS_EXE%
+
 %COCOS_EXE% --project %PROJECT_DIR% --build "stage=build;configPath=%CONFIG_PATH%;"
-set "EXIT_CODE=%ERRORLEVEL%"
+set EXIT_CODE=%ERRORLEVEL%
+
+if %EXIT_CODE% NEQ 0 (
+    echo ERROR: CocosCreator build failed with exit code %EXIT_CODE%
+)
+
 popd >nul
 if not "%CMDBUILD_NO_PAUSE%"=="1" pause
 exit /b %EXIT_CODE%
