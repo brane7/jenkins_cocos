@@ -19,7 +19,23 @@ pipeline {
             agent any
             steps {
                 echo 'Git 저장소에서 소스 코드 체크아웃 중...'
-                checkout scm
+                script {
+                    // Git 경로 명시적으로 설정
+                    def gitExe = "C:\\Program Files\\Git\\cmd\\git.exe"
+                    def repoUrl = "https://github.com/brane7/jenkins_cocos.git"
+                    def branch = "main"
+                    
+                    // Git 저장소 클론 또는 업데이트
+                    if (fileExists('.git')) {
+                        echo "Updating existing repository..."
+                        bat "${gitExe} fetch origin"
+                        bat "${gitExe} checkout ${branch}"
+                        bat "${gitExe} reset --hard origin/${branch}"
+                    } else {
+                        echo "Cloning repository..."
+                        bat "${gitExe} clone -b ${branch} ${repoUrl} ."
+                    }
+                }
             }
         }
         
