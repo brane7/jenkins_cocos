@@ -37,7 +37,7 @@ pipeline {
                     echo "Updated PATH: ${env.PATH}"
                 }
 
-                echo "CMD_Build\\cmd_build.bat ${params.TEMPLATE_KEY} ${params.COCOS_VERSION}"
+                
                 // Cocos Creator가 Jenkins 이미지에 통합되어 있으므로 직접 실행
                 bat "CMD_Build\\cmd_build.bat ${params.TEMPLATE_KEY} ${params.COCOS_VERSION}"
             }
