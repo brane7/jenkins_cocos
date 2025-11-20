@@ -25,6 +25,10 @@ pipeline {
                     def repoUrl = "https://github.com/brane7/jenkins_cocos.git"
                     def branch = "main"
                     
+                    // 작업 디렉터리 확인
+                    echo "Current directory: ${pwd()}"
+                    bat "dir"
+                    
                     // Git 저장소 클론 또는 업데이트
                     if (fileExists('.git')) {
                         echo "Updating existing repository..."
@@ -35,6 +39,10 @@ pipeline {
                         echo "Cloning repository..."
                         bat "${gitExe} clone -b ${branch} ${repoUrl} ."
                     }
+                    
+                    // 체크아웃 확인
+                    bat "${gitExe} status"
+                    bat "${gitExe} log -1"
                 }
             }
         }
@@ -54,7 +62,7 @@ pipeline {
                 }
 
                 
-                // Cocos Creator가 Jenkins 이미지에 통합되어 있으므로 직접 실행
+            
                 script {
                     echo "Current directory: ${pwd()}"
                     echo "Checking CMD_Build directory..."
