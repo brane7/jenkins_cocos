@@ -1,5 +1,5 @@
 pipeline {
-    agent none
+    agent any
     
     parameters {
         choice(
@@ -16,7 +16,6 @@ pipeline {
     
     stages {
         stage('Checkout') {
-            agent any
             steps {
                 echo 'Git 저장소에서 소스 코드 체크아웃 중...'
                 // 명시적으로 Git 저장소 체크아웃
@@ -27,7 +26,6 @@ pipeline {
         }
         
         stage('Build with Cocos') {
-            agent any
             steps {
                 script {
                     echo "템플릿: ${params.TEMPLATE_KEY}, Cocos 버전: ${params.COCOS_VERSION}"
@@ -39,7 +37,6 @@ pipeline {
         }
         
         stage('Archive Build Result') {
-            agent any
             steps {
                 script {
                     def buildDir = "build/${params.TEMPLATE_KEY}"
