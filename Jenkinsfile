@@ -30,9 +30,18 @@ pipeline {
                 script {
                     echo "템플릿: ${params.TEMPLATE_KEY}, Cocos 버전: ${params.COCOS_VERSION}"
                     echo "Cocos Creator로 빌드 실행 중..."
+                    
+                    // 컨테이너 환경에서 cmd.exe를 명시적으로 호출
+                    def cmdPath = "C:\\Windows\\System32\\cmd.exe"
+                    def batFile = "${WORKSPACE}\\CMD_Build\\cmd_build.bat"
+                    def args = "${params.TEMPLATE_KEY} ${params.COCOS_VERSION}"
+                    
+                    def exitCode = bat(script: "\"${cmdPath}\" /c \"${batFile}\" ${args}", returnStatus: true)
+                    
+                    if (exitCode != 0) {
+                        error "빌드 실패: exit code ${exitCode}"
+                    }
                 }
-                // Cocos Creator가 Jenkins 이미지에 통합되어 있으므로 직접 실행
-                bat "${WORKSPACE}\\CMD_Build\\cmd_build_wrapper.bat ${params.TEMPLATE_KEY} ${params.COCOS_VERSION}"
             }
         }
         
