@@ -19,7 +19,10 @@ pipeline {
             agent any
             steps {
                 echo 'Git 저장소에서 소스 코드 체크아웃 중...'
-                checkout scm
+                // 명시적으로 Git 저장소 체크아웃
+                git branch: 'main',
+                    url: 'https://github.com/brane7/jenkins_cocos.git',
+                    credentialsId: ''
             }
         }
         
