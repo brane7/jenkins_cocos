@@ -32,7 +32,8 @@ pipeline {
                     echo "Cocos Creator로 빌드 실행 중..."
                 }
                 // 컨테이너 환경에서 cmd.exe를 명시적으로 호출
-                bat "C:\\Windows\\System32\\cmd.exe /c \"${WORKSPACE}\\CMD_Build\\cmd_build.bat\" ${params.TEMPLATE_KEY} ${params.COCOS_VERSION}"
+                //bat "C:\\Windows\\System32\\cmd.exe /c \"${WORKSPACE}\\CMD_Build\\cmd_build.bat\" ${params.TEMPLATE_KEY} ${params.COCOS_VERSION}"
+                bat "echo %PATH%"
             }
         }
         
