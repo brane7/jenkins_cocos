@@ -1,6 +1,11 @@
 pipeline {
     agent any
     
+    environment {
+        // Windows PATH 환경변수 설정 (cmd.exe를 찾기 위해)
+        PATH = "C:\\WINDOWS\\SYSTEM32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;${env.PATH}"
+    }
+    
     parameters {
         choice(
             name: 'TEMPLATE_KEY',
@@ -31,9 +36,9 @@ pipeline {
                     echo "템플릿: ${params.TEMPLATE_KEY}, Cocos 버전: ${params.COCOS_VERSION}"
                     echo "Cocos Creator로 빌드 실행 중..."
                 }
-                // 컨테이너 환경에서 cmd.exe를 명시적으로 호출
-                //bat "C:\\Windows\\System32\\cmd.exe /c \"${WORKSPACE}\\CMD_Build\\cmd_build.bat\" ${params.TEMPLATE_KEY} ${params.COCOS_VERSION}"
-                bat "echo %PATH%"
+                // PATH 환경변수가 설정되었으므로 cmd.exe를 직접 사용 가능
+                bat "CMD_Build\\cmd_build.bat ${params.TEMPLATE_KEY} ${params.COCOS_VERSION}"
+                
             }
         }
         
