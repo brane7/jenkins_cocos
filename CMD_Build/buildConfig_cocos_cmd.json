@@ -8,7 +8,7 @@
   "buildMode": "normal",
   "mangleProperties": false,
   "md5Cache": false,
-  "skipCompressTexture": false,
+  "skipCompressTexture": true,
   "sourceMaps": false,
   "overwriteProjectSettings": {
     "includeModules": {
@@ -39,7 +39,7 @@
   "mainBundleCompressionType": "merge_dep",
   "useSplashScreen": true,
   "bundleCommonChunk": false,
-  "packAutoAtlas": true,
+  "packAutoAtlas": false,
   "startScene": "98b921c2-c13f-4d51-a6f4-48e3bea0cdc7",
   "outputName": "cocos_cmd",
   "taskName": "cocos_cmd",
