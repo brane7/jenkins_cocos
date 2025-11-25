@@ -3,7 +3,6 @@ pipeline {
     
     environment {
         // Windows PATH 환경변수 설정 (cmd.exe를 찾기 위해)
-        // PATH에 공백이 있는 경로는 따옴표 없이 추가 (배치 파일에서 자동 처리)
         PATH = "C:\\WINDOWS\\SYSTEM32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;${env.PATH}"
         // Cocos Creator 관련 환경 변수 (SYSTEM 계정 문제 해결)
         COCOS_CREATOR_NO_UPDATE_CHECK = "1"
@@ -44,7 +43,7 @@ pipeline {
                     echo "Cocos Creator로 빌드 실행 중..."
                     echo "워크스페이스 경로: ${WORKSPACE}"
                     
-                    // 빌드 전 시스템 리소스 및 필수 도구 확인
+                    // 빌드 전 시스템 리소스 확인
                     bat """
                         @echo off
                         echo === 시스템 리소스 확인 ===
@@ -52,26 +51,6 @@ pipeline {
                         echo.
                         echo === 디스크 공간 확인 ===
                         dir ${WORKSPACE} | findstr "bytes free"
-                        echo.
-                        echo === Node.js 확인 ===
-                        where node >nul 2>&1
-                        if errorlevel 1 (
-                            echo WARNING: Node.js not found in PATH
-                            echo Checking common installation paths...
-                            if exist "C:\\Program Files\\nodejs\\node.exe" (
-                                echo Node.js found at C:\\Program Files\\nodejs
-                                set "PATH=%PATH%;C:\\Program Files\\nodejs"
-                            ) else if exist "C:\\Program Files (x86)\\nodejs\\node.exe" (
-                                echo Node.js found at C:\\Program Files (x86)\\nodejs
-                                set "PATH=%PATH%;C:\\Program Files (x86)\\nodejs"
-                            ) else (
-                                echo ERROR: Node.js not found. CocosCreator build may fail.
-                            )
-                        ) else (
-                            echo Node.js found:
-                            node --version
-                            npm --version
-                        )
                         echo.
                     """
                 }
