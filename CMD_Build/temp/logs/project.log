@@ -1,32 +1,16 @@
-2025. 11. 25. 14:15:18 - log: Load engine in D:\docker\jenkins-build\Creator_3_8_7\resources\resources\3d\engine
-2025. 11. 25. 14:15:18 - log: Register native engine in D:\docker\jenkins-build\Creator_3_8_7\resources\resources\3d\engine\native
-2025. 11. 25. 14:15:19 - log: Request namespace: device-list
-2025. 11. 25. 14:15:28 - warn: cocos-service 插件构建配置无版本号，将跳过数据迁移
-2025. 11. 25. 14:15:36 - log: 2025. 11. 25. 14:15:36 - log: Asset DB is paused with build!
-
-2025. 11. 25. 14:15:36 - log: 2025. 11. 25. 14:15:36 - log: creating executor ...
-
-2025. 11. 25. 14:15:36 - log: 2025. 11. 25. 14:15:36 - log: run build task Query asset bundle success in 140 ms√, progress: 12%
-
-2025. 11. 25. 14:15:36 - log: 2025. 11. 25. 14:15:36 - log: run build task Query asset bundle success in 2 ms√, progress: 17%
-
-2025. 11. 25. 14:15:37 - log: 2025. 11. 25. 14:15:37 - log: [buildPolyfillsCommand]enter sub process 15264, 9229, see: chrome://inspect/#devices
-
-2025. 11. 25. 14:15:45 - log: 2025. 11. 25. 14:15:45 - log: [buildScriptCommand]Number of non-entry chunks: 2
-
-2025. 11. 25. 14:15:46 - log: 2025. 11. 25. 14:15:46 - log: run build task Build script success in 10 s√, progress: 22%
-
-2025. 11. 25. 14:15:47 - log: 2025. 11. 25. 14:15:47 - log: run build task Build Assets success in 289 ms√, progress: 27%
-
-2025. 11. 25. 14:15:47 - log: 2025. 11. 25. 14:15:47 - log: run build task Sort some build options to settings.json success in 2 ms√, progress: 29%
-
-2025. 11. 25. 14:15:47 - log: 2025. 11. 25. 14:15:47 - log: run build task Fill script data to settings success in 2 ms√, progress: 31%
-
-2025. 11. 25. 14:15:47 - log: 2025. 11. 25. 14:15:47 - log: run build task Sort some build options to settings.json success in 26 ms√, progress: 32%
-
-2025. 11. 25. 14:15:47 - log: 2025. 11. 25. 14:15:47 - log: run build task Sort build template success in 189 ms√, progress: 41%
-
-2025. 11. 25. 14:15:47 - log: 2025. 11. 25. 14:15:47 - log: run build task Add md5 suffix to assets success in 11 ms√, progress: 55%
-
-2025. 11. 25. 14:15:47 - log: 2025. 11. 25. 14:15:47 - log: Asset DB is resume!
-
+2025. 11. 25. 15:18:35 - log: Load engine in C:\ProgramData\cocos\editors\Creator\3.8.7\resources\resources\3d\engine
+2025. 11. 25. 15:18:35 - log: Register native engine in C:\ProgramData\cocos\editors\Creator\3.8.7\resources\resources\3d\engine\native
+2025. 11. 25. 15:18:36 - log: Request namespace: device-list
+2025. 11. 25. 15:18:53 - log: [Scene] meshopt wasm decoder initialized
+2025. 11. 25. 15:18:53 - log: [Scene] [box2d]:box2d wasm lib loaded.
+2025. 11. 25. 15:18:53 - log: [Scene] [bullet]:bullet wasm lib loaded.
+2025. 11. 25. 15:18:53 - log: [Scene] [PHYSICS]: using builtin.
+2025. 11. 25. 15:18:54 - log: [Scene] Cocos Creator v3.8.7
+2025. 11. 25. 15:18:54 - log: [Scene] Using custom pipeline: Builtin
+2025. 11. 25. 15:18:54 - log: [Scene] [PHYSICS]: switch from builtin to bullet.
+2025. 11. 25. 15:18:54 - log: [Scene] [PHYSICS2D]: switch from builtin to box2d.
+2025. 11. 25. 15:19:07 - info: [Window] Download the Vue Devtools extension for a better development experience:
+https://github.com/vuejs/vue-devtools
+2025. 11. 25. 15:19:07 - info: [Window] You are running Vue in development mode.
+Make sure to turn on production mode when deploying for production.
+See more tips at https://vuejs.org/guide/deployment.html

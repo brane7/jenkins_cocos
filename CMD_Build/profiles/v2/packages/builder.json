@@ -12,10 +12,53 @@
       "asyncFunctions": true
     },
     "buildPath": "project://build",
-    "outputName": "cocos_cmd",
+    "outputName": "cocos_cmd-001",
     "mainBundleCompressionType": "merge_dep",
     "platform": "web-mobile",
-    "name": "cocos_cmd"
+    "name": "cocos_cmd",
+    "server": "",
+    "engineModulesConfigKey": "defaultConfig",
+    "debug": false,
+    "buildMode": "normal",
+    "mangleProperties": false,
+    "md5Cache": false,
+    "skipCompressTexture": true,
+    "sourceMaps": false,
+    "overwriteProjectSettings": {
+      "includeModules": {
+        "gfx-webgl2": "on",
+        "physics": "inherit-project-setting",
+        "physics-2d": "inherit-project-setting"
+      },
+      "macroConfig": {
+        "cleanupImageCache": "inherit-project-setting"
+      }
+    },
+    "nativeCodeBundleMode": "both",
+    "experimentalEraseModules": false,
+    "startSceneAssetBundle": false,
+    "bundleConfigs": [],
+    "inlineEnum": true,
+    "useBuiltinServer": false,
+    "md5CacheOptions": {
+      "excludes": [],
+      "includes": [],
+      "replaceOnly": [],
+      "handleTemplateMd5Link": true
+    },
+    "mainBundleIsRemote": false,
+    "useSplashScreen": true,
+    "bundleCommonChunk": false,
+    "packAutoAtlas": false,
+    "startScene": "98b921c2-c13f-4d51-a6f4-48e3bea0cdc7",
+    "taskName": "cocos_cmd",
+    "scenes": [
+      {
+        "url": "db://assets/scene.scene",
+        "uuid": "98b921c2-c13f-4d51-a6f4-48e3bea0cdc7"
+      }
+    ],
+    "wasmCompressionMode": false
   },
   "BuildTaskManager": {
     "taskMap": {}
