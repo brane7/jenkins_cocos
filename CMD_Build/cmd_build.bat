@@ -37,3 +37,12 @@ echo Config Path: %CONFIG_PATH%
 echo CocosCreator: %COCOS_EXE%
 
 %COCOS_EXE% --project %PROJECT_DIR% --build "stage=build;configPath=%CONFIG_PATH%;"
+set EXIT_CODE=%ERRORLEVEL%
+
+if %EXIT_CODE% NEQ 0 (
+    echo ERROR: CocosCreator build failed with exit code %EXIT_CODE%
+)
+
+popd >nul
+if not "%CMDBUILD_NO_PAUSE%"=="1" pause
+exit /b %EXIT_CODE%

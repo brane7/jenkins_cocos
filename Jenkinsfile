@@ -61,12 +61,7 @@ pipeline {
                         @echo off
                         echo === Cocos Creator 빌드 시작 ===
                         call "${WORKSPACE}\\CMD_Build\\cmd_build.bat" ${params.TEMPLATE_KEY} ${params.COCOS_VERSION}
-                        set BUILD_EXIT_CODE=%ERRORLEVEL%
-                        echo === 빌드 종료 코드: %BUILD_EXIT_CODE% ===
-                        if %BUILD_EXIT_CODE% NEQ 0 (
-                            echo 빌드 실패: exit code %BUILD_EXIT_CODE%
-                            exit /b %BUILD_EXIT_CODE%
-                        )
+                      
                     """
                 }
             }
