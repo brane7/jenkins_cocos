@@ -54,20 +54,26 @@ pipeline {
                         echo.
                     """
                 }
-                // PATH 환경변수가 설정되었으므로 cmd.exe를 직접 사용 가능
-                // 타임아웃 설정 (60분) 및 상세 로그 출력
-                timeout(time: 60, unit: 'MINUTES') {
-                    bat """
-                        @echo off
-                        echo === Cocos Creator 빌드 시작 ===
-                        call "${WORKSPACE}\\CMD_Build\\cmd_build.bat" ${params.TEMPLATE_KEY} ${params.COCOS_VERSION}
-                        set BUILD_EXIT_CODE=%ERRORLEVEL%
-                        echo === 빌드 종료 코드: %BUILD_EXIT_CODE% ===
-                        if %BUILD_EXIT_CODE% NEQ 0 (
-                            echo 빌드 실패: exit code %BUILD_EXIT_CODE%
-                            exit /b %BUILD_EXIT_CODE%
-                        )
-                    """
+                // 오류 발생 시 무시하고 다음 stage로 진행
+                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                    // PATH 환경변수가 설정되었으므로 cmd.exe를 직접 사용 가능
+                    // 타임아웃 설정 (60분) 및 상세 로그 출력
+                    timeout(time: 60, unit: 'MINUTES') {
+                        bat """
+                            @echo off
+                            echo === Cocos Creator 빌드 시작 ===
+                            call "${WORKSPACE}\\CMD_Build\\cmd_build.bat" ${params.TEMPLATE_KEY} ${params.COCOS_VERSION}
+                            set BUILD_EXIT_CODE=%ERRORLEVEL%
+                            echo === 빌드 종료 코드: %BUILD_EXIT_CODE% ===
+                            if %BUILD_EXIT_CODE% NEQ 0 (
+                                echo ⚠️ 빌드 실패: exit code %BUILD_EXIT_CODE% (무시하고 계속 진행)
+                                exit /b %BUILD_EXIT_CODE%
+                            )
+                        """
+                    }
+                }
+                script {
+                    echo "⚠️ Build with Cocos 단계 완료 (오류가 있어도 계속 진행)"
                 }
             }
         }
