@@ -1,8 +1,0 @@
-2025. 11. 25. 09:57:20-log: Cannot access game frame or container.
-2025. 11. 25. 09:57:21-debug: asset-db:require-engine-code (1156ms)
-2025. 11. 25. 09:57:21-log: meshopt wasm decoder initialized
-2025. 11. 25. 09:57:21-log: [bullet]:bullet wasm lib loaded.
-2025. 11. 25. 09:57:21-log: [box2d]:box2d wasm lib loaded.
-2025. 11. 25. 09:57:21-log: Cocos Creator v3.8.7
-2025. 11. 25. 09:57:21-log: Using legacy pipeline
-2025. 11. 25. 09:57:21-log: Forward render pipeline initialized.

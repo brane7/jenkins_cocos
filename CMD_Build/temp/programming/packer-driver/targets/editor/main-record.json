@@ -1,7 +1,7 @@
 {
   "modules": {
     "cce:/internal/x/cc": {
-      "mTimestamp": 8280.0245,
+      "mTimestamp": 12511.99,
       "chunkId": "93ba276ea7b26ffcdc433fab14afc1ed6f05647b",
       "imports": [
         {
@@ -997,11 +997,11 @@
       ]
     },
     "cce:/internal/x/prerequisite-imports": {
-      "mTimestamp": 11025.0765,
+      "mTimestamp": 17518.4342,
       "chunkId": "6d8fd2b0177941b032ddc0733af48a561fb60657",
       "imports": [
         {
-          "value": "file:///C:/ProgramData/cocos/editors/Creator/3.8.7/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-dof-pass.ts",
+          "value": "file:///D:/TestWork/jenkins_test/CMD_Build/assets/Main.ts",
           "resolved": "__unresolved_0",
           "loc": {
             "start": {
@@ -1010,91 +1010,91 @@
             },
             "end": {
               "line": 5,
-              "column": 174
+              "column": 94
             }
           }
         },
         {
-          "value": "file:///C:/ProgramData/cocos/editors/Creator/3.8.7/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-pass.ts",
+          "value": "file:///D:/docker/jenkins-build/Creator_3_8_7/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-dof-pass.ts",
           "resolved": "__unresolved_1",
           "loc": {
             "start": {
               "line": 5,
-              "column": 190
+              "column": 110
             },
             "end": {
               "line": 5,
-              "column": 334
+              "column": 244
             }
           }
         },
         {
-          "value": "file:///C:/ProgramData/cocos/editors/Creator/3.8.7/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts",
+          "value": "file:///D:/docker/jenkins-build/Creator_3_8_7/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-pass.ts",
           "resolved": "__unresolved_2",
           "loc": {
             "start": {
               "line": 5,
-              "column": 350
+              "column": 260
             },
             "end": {
               "line": 5,
-              "column": 498
+              "column": 399
             }
           }
         },
         {
-          "value": "file:///C:/ProgramData/cocos/editors/Creator/3.8.7/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts",
+          "value": "file:///D:/docker/jenkins-build/Creator_3_8_7/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts",
           "resolved": "__unresolved_3",
           "loc": {
             "start": {
               "line": 5,
-              "column": 514
+              "column": 415
             },
             "end": {
               "line": 5,
-              "column": 659
+              "column": 558
             }
           }
         },
         {
-          "value": "file:///C:/ProgramData/cocos/editors/Creator/3.8.7/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts",
+          "value": "file:///D:/docker/jenkins-build/Creator_3_8_7/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts",
           "resolved": "__unresolved_4",
           "loc": {
             "start": {
               "line": 5,
-              "column": 675
+              "column": 574
             },
             "end": {
               "line": 5,
-              "column": 814
+              "column": 714
             }
           }
         },
         {
-          "value": "file:///C:/ProgramData/cocos/editors/Creator/3.8.7/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts",
+          "value": "file:///D:/docker/jenkins-build/Creator_3_8_7/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts",
           "resolved": "__unresolved_5",
           "loc": {
             "start": {
               "line": 5,
-              "column": 830
+              "column": 730
             },
             "end": {
               "line": 5,
-              "column": 962
+              "column": 864
             }
           }
         },
         {
-          "value": "file:///D:/TestWork/jenkins_test/CMD_Build/assets/Main.ts",
+          "value": "file:///D:/docker/jenkins-build/Creator_3_8_7/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts",
           "resolved": "__unresolved_6",
           "loc": {
             "start": {
               "line": 5,
-              "column": 978
+              "column": 880
             },
             "end": {
               "line": 5,
-              "column": 1037
+              "column": 1007
             }
           }
         }
@@ -1104,49 +1104,49 @@
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/ProgramData/cocos/editors/Creator/3.8.7/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-dof-pass.ts"
-          },
-          "messages": []
-        },
-        {
-          "resolved": {
-            "type": "module",
-            "url": "file:///C:/ProgramData/cocos/editors/Creator/3.8.7/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-pass.ts"
-          },
-          "messages": []
-        },
-        {
-          "resolved": {
-            "type": "module",
-            "url": "file:///C:/ProgramData/cocos/editors/Creator/3.8.7/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts"
-          },
-          "messages": []
-        },
-        {
-          "resolved": {
-            "type": "module",
-            "url": "file:///C:/ProgramData/cocos/editors/Creator/3.8.7/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts"
-          },
-          "messages": []
-        },
-        {
-          "resolved": {
-            "type": "module",
-            "url": "file:///C:/ProgramData/cocos/editors/Creator/3.8.7/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts"
-          },
-          "messages": []
-        },
-        {
-          "resolved": {
-            "type": "module",
-            "url": "file:///C:/ProgramData/cocos/editors/Creator/3.8.7/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts"
-          },
-          "messages": []
-        },
-        {
-          "resolved": {
-            "type": "module",
             "url": "file:///D:/TestWork/jenkins_test/CMD_Build/assets/Main.ts"
+          },
+          "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
+            "url": "file:///D:/docker/jenkins-build/Creator_3_8_7/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-dof-pass.ts"
+          },
+          "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
+            "url": "file:///D:/docker/jenkins-build/Creator_3_8_7/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-pass.ts"
+          },
+          "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
+            "url": "file:///D:/docker/jenkins-build/Creator_3_8_7/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts"
+          },
+          "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
+            "url": "file:///D:/docker/jenkins-build/Creator_3_8_7/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts"
+          },
+          "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
+            "url": "file:///D:/docker/jenkins-build/Creator_3_8_7/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts"
+          },
+          "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
+            "url": "file:///D:/docker/jenkins-build/Creator_3_8_7/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts"
           },
           "messages": []
         }
@@ -1715,7 +1715,7 @@
       ]
     },
     "cce:/internal/code-quality/cr.mjs": {
-      "mTimestamp": 1764036784429,
+      "mTimestamp": 1764047718686,
       "chunkId": "6a5019a719a9014c047e67aa1cf34453ab8392ce",
       "imports": [],
       "type": "esm",
