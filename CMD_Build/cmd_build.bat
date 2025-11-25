@@ -35,33 +35,9 @@ echo Running CocosCreator...
 echo Project Dir: %PROJECT_DIR%
 echo Config Path: %CONFIG_PATH%
 echo CocosCreator: %COCOS_EXE%
-echo.
 
-REM 빌드 전 정리 작업 (메모리 절약)
-echo Cleaning up before build...
-if exist "%PROJECT_DIR%\temp" (
-    echo Removing temp folder...
-    rd /s /q "%PROJECT_DIR%\temp" 2>nul
-)
-if exist "%PROJECT_DIR%\library\meta" (
-    echo Cleaning library meta cache...
-    rd /s /q "%PROJECT_DIR%\library\meta" 2>nul
-)
-
-REM 환경 변수 설정 (메모리 최적화)
-set NODE_OPTIONS=--max-old-space-size=4096
-set COCOS_CREATOR_NO_UPDATE_CHECK=1
-
-REM Cocos Creator 빌드 실행
-echo Starting Cocos Creator build...
-echo This may take several minutes...
-echo.
-
-"%COCOS_EXE%" --project "%PROJECT_DIR%" --build "stage=build;configPath=%CONFIG_PATH%;"
+%COCOS_EXE% --project %PROJECT_DIR% --build "stage=build;configPath=%CONFIG_PATH%;"
 set EXIT_CODE=%ERRORLEVEL%
-
-echo.
-echo Build process completed with exit code: %EXIT_CODE%
 
 if %EXIT_CODE% NEQ 0 (
     echo ERROR: CocosCreator build failed with exit code %EXIT_CODE%
