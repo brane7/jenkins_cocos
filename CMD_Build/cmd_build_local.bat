@@ -8,16 +8,13 @@ set PATH=%PATH%;C:\Windows\System32
 REM Set absolute path for cmd.exe (if needed)
 set CMD_EXE=C:\Windows\System32\cmd.exe
 set SCRIPT_DIR=%~dp0
-pushd %SCRIPT_DIR% >nul
-set PROJECT_DIR=%CD%
-set CONFIG_PATH=%PROJECT_DIR%\buildConfig_cocos_cmd.json
+REM CMD_Build 폴더가 실제 Cocos Creator 프로젝트 폴더
+set PROJECT_DIR=%SCRIPT_DIR%
+REM buildConfig_cocos_cmd.json은 루트 폴더에 존재
+set CONFIG_PATH=%SCRIPT_DIR%buildConfig_cocos_cmd.json
 
-REM Check and set CocosCreator.exe path
-if defined COCOS_ROOT (
-    set COCOS_EXE=%COCOS_ROOT%\CocosCreator.exe
-) else (
-    set COCOS_EXE=C:\CocosCreator\CocosCreator.exe
-)
+REM Set CocosCreator.exe path (로컬 테스트용 절대 경로)
+set COCOS_EXE=C:\ProgramData\cocos\editors\Creator\3.8.7\CocosCreator.exe
 
 REM Check if CocosCreator.exe exists
 if not exist %COCOS_EXE% (
@@ -35,26 +32,14 @@ echo Running CocosCreator...
 echo Project Dir: %PROJECT_DIR%
 echo Config Path: %CONFIG_PATH%
 echo CocosCreator: %COCOS_EXE%
-echo.
 
-REM 빌드 전 임시 폴더 정리 (메모리 절약)
-if exist "%PROJECT_DIR%\temp" (
-    echo Cleaning temp folder...
-    rd /s /q "%PROJECT_DIR%\temp" 2>nul
-)
 
-REM Cocos Creator 빌드 실행 (에러 핸들링 강화)
-echo Starting build process...
 %COCOS_EXE% --project %PROJECT_DIR% --build "stage=build;configPath=%CONFIG_PATH%;"
 set EXIT_CODE=%ERRORLEVEL%
-
-echo.
-echo Build process finished with exit code: %EXIT_CODE%
 
 if %EXIT_CODE% NEQ 0 (
     echo ERROR: CocosCreator build failed with exit code %EXIT_CODE%
 )
 
-popd >nul
 if not "%CMDBUILD_NO_PAUSE%"=="1" pause
 exit /b %EXIT_CODE%

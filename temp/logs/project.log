@@ -1,0 +1,11 @@
+2025. 11. 25. 09:49:15 - log: Project definition file not found. Possible project corruption. Check whether the project is normal.
+2025. 11. 25. 09:49:15 - error: D:\TestWork\jenkins_test\package.json: ENOENT: no such file or directory, open 'D:\TestWork\jenkins_test\package.json'Error: D:\TestWork\jenkins_test\package.json: ENOENT: no such file or directory, open 'D:\TestWork\jenkins_test\package.json'
+    at Object.openSync (node:fs:573:18)
+    at Object.func [as openSync] (node:electron/js2c/node_init:2:2559)
+    at Object.readFileSync (node:fs:452:35)
+    at t.readFileSync (node:electron/js2c/node_init:2:10245)
+    at readFileSync (C:\ProgramData\cocos\editors\Creator\3.8.7\resources\app.asar\node_modules\fs-extra\node_modules\jsonfile\index.js:50:22)
+    at init (C:\ProgramData\cocos\editors\Creator\3.8.7\resources\app.asar\node_modules\@editor\creator\dist\project\protected\browser\index.ccc:1:1663)
+    at async Object.manager (C:\ProgramData\cocos\editors\Creator\3.8.7\resources\app.asar\node_modules\@editor\creator\dist\startup\protected\browser\index.ccc:1:1509)
+    at async launch (C:\ProgramData\cocos\editors\Creator\3.8.7\resources\app.asar\launch\dist\launch.js:1:869)
+    at async C:\ProgramData\cocos\editors\Creator\3.8.7\resources\app.asar\launch\dist\index.js:1:1208
