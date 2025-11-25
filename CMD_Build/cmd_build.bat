@@ -36,7 +36,7 @@ echo Project Dir: %PROJECT_DIR%
 echo Config Path: %CONFIG_PATH%
 echo CocosCreator: %COCOS_EXE%
 
-%COCOS_EXE% --project %PROJECT_DIR% --build "stage=build;platform=web-desktop;debug=true;"
+%COCOS_EXE% --project %PROJECT_DIR% --build "stage=build;configPath=%CONFIG_PATH%;"
 set EXIT_CODE=%ERRORLEVEL%
 
 if %EXIT_CODE% NEQ 0 (
