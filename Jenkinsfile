@@ -6,7 +6,10 @@ pipeline {
         PATH = "C:\\WINDOWS\\SYSTEM32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;${env.PATH}"
         // Cocos Creator 관련 환경 변수 (SYSTEM 계정 문제 해결)
         COCOS_CREATOR_NO_UPDATE_CHECK = "1"
-        NODE_OPTIONS = "--max-old-space-size=4096"
+        // Electron 앱에서는 NODE_OPTIONS 대부분이 지원되지 않으므로 제거
+        // 스택 오버플로우 방지를 위해 다른 방법 사용
+        // 빌드 중 일시정지 방지
+        CMDBUILD_NO_PAUSE = "1"
         // 사용자 프로필 경로 설정 (SYSTEM 계정이 아닌 경우)
         USERPROFILE = "${env.USERPROFILE}"
         APPDATA = "${env.APPDATA}"
@@ -61,7 +64,12 @@ pipeline {
                         @echo off
                         echo === Cocos Creator 빌드 시작 ===
                         call "${WORKSPACE}\\CMD_Build\\cmd_build.bat" ${params.TEMPLATE_KEY} ${params.COCOS_VERSION}
-                      
+                        set BUILD_EXIT_CODE=%ERRORLEVEL%
+                        echo === 빌드 종료 코드: %BUILD_EXIT_CODE% ===
+                        if %BUILD_EXIT_CODE% NEQ 0 (
+                            echo 빌드 실패: exit code %BUILD_EXIT_CODE%
+                            exit /b %BUILD_EXIT_CODE%
+                        )
                     """
                 }
             }
