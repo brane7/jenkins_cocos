@@ -31,20 +31,31 @@ if not exist %CONFIG_PATH% (
     exit /b 1
 )
 
-REM Set environment variables (Electron 앱에서는 NODE_OPTIONS가 제한적이므로 제거)
-set COCOS_CREATOR_NO_UPDATE_CHECK=1
-
-REM 스택 오버플로우 방지를 위해 환경 변수 정리
-REM 불필요한 환경 변수는 제거하여 스택 사용량 최소화
+REM Check Node.js installation (CocosCreator 빌드에 필요할 수 있음)
+where node >nul 2>&1
+if %ERRORLEVEL% NEQ 0 (
+    echo WARNING: Node.js not found in PATH. CocosCreator may need Node.js for build process.
+    echo Checking common Node.js installation paths...
+    if exist "C:\Program Files\nodejs\node.exe" (
+        set PATH=%PATH%;C:\Program Files\nodejs
+        echo Node.js found at C:\Program Files\nodejs and added to PATH
+    ) else if exist "C:\Program Files (x86)\nodejs\node.exe" (
+        set PATH=%PATH%;C:\Program Files (x86)\nodejs
+        echo Node.js found at C:\Program Files (x86)\nodejs and added to PATH
+    ) else (
+        echo WARNING: Node.js not found. This may cause build failures.
+    )
+) else (
+    echo Node.js found in PATH
+    node --version
+)
 
 echo Running CocosCreator...
 echo Project Dir: %PROJECT_DIR%
 echo Config Path: %CONFIG_PATH%
 echo CocosCreator: %COCOS_EXE%
 
-REM CocosCreator 실행 (경로를 따옴표로 감싸서 공백 처리)
-REM 직접 실행하여 스택 오버플로우 위험 최소화
-"%COCOS_EXE%" --project "%PROJECT_DIR%" --build "stage=build;configPath=%CONFIG_PATH%;"
+%COCOS_EXE% --project %PROJECT_DIR% --build "stage=build;configPath=%CONFIG_PATH%;"
 set EXIT_CODE=%ERRORLEVEL%
 
 if %EXIT_CODE% NEQ 0 (

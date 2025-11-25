@@ -3,13 +3,10 @@ pipeline {
     
     environment {
         // Windows PATH 환경변수 설정 (cmd.exe를 찾기 위해)
-        PATH = "C:\\WINDOWS\\SYSTEM32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;${env.PATH}"
+        PATH = "C:\\WINDOWS\\SYSTEM32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\Program Files\\nodejs;C:\\Program Files (x86)\\nodejs;${env.PATH}"
         // Cocos Creator 관련 환경 변수 (SYSTEM 계정 문제 해결)
         COCOS_CREATOR_NO_UPDATE_CHECK = "1"
-        // Electron 앱에서는 NODE_OPTIONS 대부분이 지원되지 않으므로 제거
-        // 스택 오버플로우 방지를 위해 다른 방법 사용
-        // 빌드 중 일시정지 방지
-        CMDBUILD_NO_PAUSE = "1"
+        NODE_OPTIONS = "--max-old-space-size=4096"
         // 사용자 프로필 경로 설정 (SYSTEM 계정이 아닌 경우)
         USERPROFILE = "${env.USERPROFILE}"
         APPDATA = "${env.APPDATA}"
@@ -46,7 +43,7 @@ pipeline {
                     echo "Cocos Creator로 빌드 실행 중..."
                     echo "워크스페이스 경로: ${WORKSPACE}"
                     
-                    // 빌드 전 시스템 리소스 확인
+                    // 빌드 전 시스템 리소스 및 필수 도구 확인
                     bat """
                         @echo off
                         echo === 시스템 리소스 확인 ===
@@ -54,6 +51,24 @@ pipeline {
                         echo.
                         echo === 디스크 공간 확인 ===
                         dir ${WORKSPACE} | findstr "bytes free"
+                        echo.
+                        echo === Node.js 확인 ===
+                        where node >nul 2>&1
+                        if %ERRORLEVEL% EQU 0 (
+                            echo Node.js found:
+                            node --version
+                            npm --version
+                        ) else (
+                            echo WARNING: Node.js not found in PATH
+                            echo Checking common installation paths...
+                            if exist "C:\\Program Files\\nodejs\\node.exe" (
+                                echo Node.js found at C:\\Program Files\\nodejs
+                            ) else if exist "C:\\Program Files (x86)\\nodejs\\node.exe" (
+                                echo Node.js found at C:\\Program Files (x86)\\nodejs
+                            ) else (
+                                echo ERROR: Node.js not found. CocosCreator build may fail.
+                            )
+                        )
                         echo.
                     """
                 }
