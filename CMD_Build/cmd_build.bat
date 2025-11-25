@@ -35,21 +35,9 @@ echo Running CocosCreator...
 echo Project Dir: %PROJECT_DIR%
 echo Config Path: %CONFIG_PATH%
 echo CocosCreator: %COCOS_EXE%
-echo.
 
-REM 빌드 전 임시 폴더 정리 (메모리 절약)
-if exist "%PROJECT_DIR%\temp" (
-    echo Cleaning temp folder...
-    rd /s /q "%PROJECT_DIR%\temp" 2>nul
-)
-
-REM Cocos Creator 빌드 실행 (에러 핸들링 강화)
-echo Starting build process...
 %COCOS_EXE% --project %PROJECT_DIR% --build "stage=build;configPath=%CONFIG_PATH%;"
 set EXIT_CODE=%ERRORLEVEL%
-
-echo.
-echo Build process finished with exit code: %EXIT_CODE%
 
 if %EXIT_CODE% NEQ 0 (
     echo ERROR: CocosCreator build failed with exit code %EXIT_CODE%
