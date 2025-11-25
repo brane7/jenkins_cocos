@@ -4,6 +4,12 @@ pipeline {
     environment {
         // Windows PATH 환경변수 설정 (cmd.exe를 찾기 위해)
         PATH = "C:\\WINDOWS\\SYSTEM32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;${env.PATH}"
+        // Cocos Creator 관련 환경 변수 (SYSTEM 계정 문제 해결)
+        COCOS_CREATOR_NO_UPDATE_CHECK = "1"
+        NODE_OPTIONS = "--max-old-space-size=4096"
+        // 사용자 프로필 경로 설정 (SYSTEM 계정이 아닌 경우)
+        USERPROFILE = "${env.USERPROFILE}"
+        APPDATA = "${env.APPDATA}"
     }
     
     parameters {
