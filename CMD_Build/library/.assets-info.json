@@ -1,0 +1,20 @@
+{
+  "version": "1.0.1",
+  "map": {
+    "Main.ts.meta": {
+      "time": 1763084945869.271
+    },
+    "Main.ts": {
+      "time": 1763084945844.512,
+      "uuid": "bd29140e-af36-46b8-8991-44173f5df403"
+    },
+    "scene.scene.meta": {
+      "time": 1763084961513.0845
+    },
+    "scene.scene": {
+      "time": 1763084961500.133,
+      "uuid": "98b921c2-c13f-4d51-a6f4-48e3bea0cdc7"
+    }
+  },
+  "missing": {}
+}
