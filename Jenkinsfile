@@ -10,6 +10,9 @@ pipeline {
         // 사용자 프로필 경로 설정 (SYSTEM 계정이 아닌 경우)
         USERPROFILE = "${env.USERPROFILE}"
         APPDATA = "${env.APPDATA}"
+
+        ELECTRON_DISABLE_SANDBOX = '1'
+        ELECTRON_NO_ATTACH_CONSOLE = '1'
     }
     
     parameters {
