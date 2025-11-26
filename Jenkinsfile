@@ -13,6 +13,8 @@ pipeline {
 
         ELECTRON_DISABLE_SANDBOX = '1'
         ELECTRON_NO_ATTACH_CONSOLE = '1'
+        PATH = "C:\\WINDOWS\\SYSTEM32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;${env.PATH}"
+        ELECTRON_RUN_AS_NODE = '0'
     }
     
     parameters {
